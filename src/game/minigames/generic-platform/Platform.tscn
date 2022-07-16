@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/game/minigames/generic-platform/assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/game/minigames/generic-platform/assets/price.png" type="Texture" id=2]
+[ext_resource path="res://src/game/minigames/generic-platform/assets/player.png" type="Texture" id=3]
+[ext_resource path="res://src/game/minigames/generic-platform/scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://src/game/minigames/generic-platform/scripts/Prize.gd" type="Script" id=5]
+[ext_resource path="res://src/game/minigames/generic-platform/assets/prize.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65545, 0, 0, 131072, 0, 0, 131081, 0, 0, 196608, 0, 0, 196617, 0, 0, 262144, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327680, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 458752, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524288, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0 )
+
+[node name="Player" type="KinematicBody2D" parent="." groups=["player"]]
+position = Vector2( 96, 480 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="Prices" type="Node" parent="."]
+
+[node name="Prize" type="Area2D" parent="Prices"]
+position = Vector2( 224, 480 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize"]
+shape = SubResource( 2 )
+
+[node name="Prize2" type="Area2D" parent="Prices"]
+position = Vector2( 352, 352 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize2"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize2"]
+shape = SubResource( 2 )
+
+[node name="Prize3" type="Area2D" parent="Prices"]
+position = Vector2( 160, 288 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize3"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize3"]
+shape = SubResource( 2 )
+
+[node name="Prize4" type="Area2D" parent="Prices"]
+position = Vector2( 480, 160 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize4"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize4"]
+shape = SubResource( 2 )
+
+[node name="Prize5" type="Area2D" parent="Prices"]
+position = Vector2( 224, 96 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize5"]
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize5"]
+shape = SubResource( 2 )
+
+[node name="Prize6" type="Area2D" parent="Prices"]
+position = Vector2( 96, 224 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Prices/Prize6"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Prices/Prize6"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Prices/Prize" to="Prices/Prize" method="_on_Prize_body_entered"]
+[connection signal="body_entered" from="Prices/Prize2" to="Prices/Prize2" method="_on_Prize_body_entered"]
+[connection signal="body_entered" from="Prices/Prize3" to="Prices/Prize3" method="_on_Prize_body_entered"]
+[connection signal="body_entered" from="Prices/Prize4" to="Prices/Prize4" method="_on_Prize_body_entered"]
+[connection signal="body_entered" from="Prices/Prize5" to="Prices/Prize5" method="_on_Prize_body_entered"]
+[connection signal="body_entered" from="Prices/Prize6" to="Prices/Prize6" method="_on_Prize_body_entered"]
