@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/game/minigames/generic-platform/assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/prefab-scene/BackgroundPlaceholder.png" type="Texture" id=2]
+[ext_resource path="res://src/game/minigames/generic-platform/assets/price.png" type="Texture" id=3]
+[ext_resource path="res://src/game/minigames/generic-platform/assets/player.png" type="Texture" id=4]
+[ext_resource path="res://src/game/minigames/generic-platform/scripts/Player.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="TextureRect" type="TextureRect"]
+margin_right = 1280.0
+margin_bottom = 640.0
+texture = ExtResource( 2 )
+
+[node name="World" type="Node" parent="."]
+
+[node name="Player" type="KinematicBody2D" parent="World"]
+position = Vector2( 96, 480 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="World/Player"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Player"]
+shape = SubResource( 1 )
+
+[node name="Price" type="StaticBody2D" parent="World"]
+position = Vector2( 128, 64 )
+
+[node name="Sprite" type="Sprite" parent="World/Price"]
+position = Vector2( 352, 96 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Price"]
+position = Vector2( 352, 96 )
+shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="World"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65536, 0, 0, 65545, 0, 0, 131072, 0, 0, 131081, 0, 0, 196608, 0, 0, 196617, 0, 0, 262144, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327680, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 458752, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 524288, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0 )
