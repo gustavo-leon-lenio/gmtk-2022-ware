@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.737255, 0.94902, 0.643137, 1 )
 
-[node name="Label" type="Label" parent="."]
+[node name="TypingText" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -27,6 +27,13 @@ margin_left = -80.0
 margin_top = -149.0
 margin_right = 82.0
 margin_bottom = -84.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "EXAMPLE"
+align = 1
+clip_text = true
+uppercase = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
