@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame-3.png-63c5b3d65db9504bca89224e5a0ab4bb.stex"
+path="res://.import/FlappyWall.png-74197f1655bc4c85a909dc208d82663d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/game/minigames/flappy-duck/PNG/frame-3.png"
-dest_files=[ "res://.import/frame-3.png-63c5b3d65db9504bca89224e5a0ab4bb.stex" ]
+source_file="res://src/game/minigames/flappy-duck/PNG/FlappyWall.png"
+dest_files=[ "res://.import/FlappyWall.png-74197f1655bc4c85a909dc208d82663d.stex" ]
 
 [params]
 
