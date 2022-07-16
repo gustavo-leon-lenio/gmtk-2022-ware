@@ -1,15 +1,34 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/game/minigames/flappy-duck/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/game/minigames/flappy-duck/PNG/FlappyWall.png" type="Texture" id=2]
 [ext_resource path="res://src/game/minigames/flappy-duck/Walls.gd" type="Script" id=3]
-[ext_resource path="res://src/game/minigames/flappy-duck/PNG/Frame-1.png" type="Texture" id=4]
+[ext_resource path="res://src/game/minigames/flappy-duck/PNG/goose-fly/goose-fly-step3.png" type="Texture" id=4]
+[ext_resource path="res://src/game/minigames/flappy-duck/PNG/goose-fly/goose-fly-step2.png" type="Texture" id=5]
+[ext_resource path="res://src/game/minigames/flappy-duck/PNG/goose-fly/goose-fly-step1.png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 14.4411
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 263, 144 )
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 16.6756
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 263, 145 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 263, 162 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "goose-fly",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 9, 236 )
@@ -20,13 +39,13 @@ extents = Vector2( 16, 64 )
 [sub_resource type="OccluderPolygon2D" id=7]
 polygon = PoolVector2Array( -16, -64, 16, -64, 16, 64, -16, 64 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 16, 64 )
 
-[sub_resource type="OccluderPolygon2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=11]
 polygon = PoolVector2Array( -16, 64, 16, 64, 16, -64, -16, -64 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 9.5, 64 )
 
 [node name="World" type="Node2D"]
@@ -40,20 +59,23 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Bird" type="Sprite" parent="flappy-duck/Player"]
-scale = Vector2( 0.06, 0.1 )
-texture = ExtResource( 4 )
+[node name="Bird" type="AnimatedSprite" parent="flappy-duck/Player"]
+scale = Vector2( 0.3, 0.4 )
+frames = SubResource( 9 )
+animation = "goose-fly"
+playing = true
 
-[node name="BirdCollisionBox" type="CollisionShape2D" parent="flappy-duck/Player"]
-position = Vector2( 2.4444, -3.02991 )
-shape = SubResource( 1 )
+[node name="BirdCollisionBox" type="CollisionPolygon2D" parent="flappy-duck/Player"]
+scale = Vector2( 0.3, 0.4 )
+build_mode = 1
+polygon = PoolVector2Array( -76.4745, -24.9848, -29.2225, -14.4334, 16.6533, 11.257, 25.8284, 6.21068, 28.1222, -27.7374, 12.9832, -44.7114, 34.5448, -53.8866, 40.9674, -78.2007, 62.9877, -62.1442, 83.1731, -62.6029, 82.2556, -46.0877, 103.358, -11.2221, 129.966, 1.16435, 118.039, 19.9734, 95.1008, 16.7621, 75.8329, 30.0661, 34.086, 35.1124, 19.4058, 53.9215, -42.0677, 69.0605, -53.5367, 78.2356, -79.6858, 79.1531, -110.881, 24.1022, -129.232, -26.3611, -131.525, -42.8764 )
 
 [node name="Detect" type="Area2D" parent="flappy-duck/Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="flappy-duck/Player/Detect"]
-visible = false
-position = Vector2( 2.43127, -3.62991 )
-shape = SubResource( 2 )
+[node name="BirdCollisionBox" type="CollisionPolygon2D" parent="flappy-duck/Player/Detect"]
+scale = Vector2( 0.3, 0.4 )
+build_mode = 1
+polygon = PoolVector2Array( -76.4745, -24.9848, -29.2225, -14.4334, 16.6533, 11.257, 25.8284, 6.21068, 28.1222, -27.7374, 12.9832, -44.7114, 34.5448, -53.8866, 40.9674, -78.2007, 62.9877, -62.1442, 83.1731, -62.6029, 82.2556, -46.0877, 103.358, -11.2221, 129.966, 1.16435, 118.039, 19.9734, 95.1008, 16.7621, 75.8329, 30.0661, 34.086, 35.1124, 19.4058, 53.9215, -42.0677, 69.0605, -53.5367, 78.2356, -79.6858, 79.1531, -110.881, 24.1022, -129.232, -26.3611, -131.525, -42.8764 )
 
 [node name="Resetter" type="Area2D" parent="flappy-duck/Player"]
 position = Vector2( -559.946, -8.10573 )
@@ -90,17 +112,17 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode2" type="Node2D" parent="."]
 position = Vector2( 920, -16 )
@@ -130,17 +152,17 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode2/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode2/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode2/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode2/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode3" type="Node2D" parent="."]
 position = Vector2( 1080, 88 )
@@ -170,17 +192,17 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode3/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode3/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode3/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode3/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode4" type="Node2D" parent="."]
 position = Vector2( 1256, 85 )
@@ -210,20 +232,20 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode4/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode4/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode4/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode4/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode5" type="Node2D" parent="."]
-position = Vector2( 1400, -64 )
+position = Vector2( 1400, -53 )
 scale = Vector2( 1.5, 2 )
 __meta__ = {
 "_edit_group_": true
@@ -250,20 +272,20 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode5/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode5/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode5/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode5/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode6" type="Node2D" parent="."]
-position = Vector2( 1485, 95 )
+position = Vector2( 1485, 74 )
 scale = Vector2( 1.5, 2 )
 __meta__ = {
 "_edit_group_": true
@@ -290,17 +312,17 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode6/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode6/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode6/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode6/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Wallnode7" type="Node2D" parent="."]
 position = Vector2( 1565, -54 )
@@ -330,17 +352,17 @@ texture = ExtResource( 2 )
 
 [node name="BottomWallColl" type="CollisionShape2D" parent="Wallnode7/Walls"]
 position = Vector2( 0, 128 )
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="BottomWallLightOccl" type="LightOccluder2D" parent="Wallnode7/Walls"]
 position = Vector2( 0, 128 )
-occluder = SubResource( 4 )
+occluder = SubResource( 11 )
 
 [node name="PointArea" type="Area2D" parent="Wallnode7/Walls"]
 
 [node name="Collision" type="CollisionShape2D" parent="Wallnode7/Walls/PointArea"]
 position = Vector2( 0.5, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 2, 0 )
