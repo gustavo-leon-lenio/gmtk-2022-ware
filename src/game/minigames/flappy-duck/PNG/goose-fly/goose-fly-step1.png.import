@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/frame-2.png-0bdc7c1af269a912e59ce232f373e4ac.stex"
+path="res://.import/goose-fly-step1.png-e345517f721b9443ead6a77cbbe7bdc9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/game/minigames/flappy-duck/PNG/frame-2.png"
-dest_files=[ "res://.import/frame-2.png-0bdc7c1af269a912e59ce232f373e4ac.stex" ]
+source_file="res://src/game/minigames/flappy-duck/PNG/goose-fly/goose-fly-step1.png"
+dest_files=[ "res://.import/goose-fly-step1.png-e345517f721b9443ead6a77cbbe7bdc9.stex" ]
 
 [params]
 

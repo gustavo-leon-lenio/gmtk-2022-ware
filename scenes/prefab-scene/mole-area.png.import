@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Frame-1.png-83a37f3fac738776631d6d9f13b28d16.stex"
+path="res://.import/mole-area.png-5a74674a84cc05fd42abef493b5c00ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/game/minigames/flappy-duck/PNG/Frame-1.png"
-dest_files=[ "res://.import/Frame-1.png-83a37f3fac738776631d6d9f13b28d16.stex" ]
+source_file="res://scenes/prefab-scene/mole-area.png"
+dest_files=[ "res://.import/mole-area.png-5a74674a84cc05fd42abef493b5c00ab.stex" ]
 
 [params]
 
