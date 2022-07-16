@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/game/minigames/flappy-duck/actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/game/minigames/flappy-duck/PNG/Frame-1.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 208.154
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 520, 456 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Frame-1" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 32, 8 )
+shape = SubResource( 1 )
